@@ -1,0 +1,49 @@
+    <!-- crousel -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" *ngIf="listOfEvents && listOfEvents.length">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner"  >
+            <div class="carousel-item active">
+                <img src="assets/images/spSindh.png"  class="d-block w-100" alt="..." style="width:1920px ;height:500px ;">
+              </div>
+          <div>
+            <div class="carousel-item" *ngFor="let event of images">
+              
+              <img [src]="event.image"  class="d-block w-100" alt="..." style="width:1920px ;height:500px ;">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>{{event.title}}</h5>
+                <p>{{event.description}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <div class="naac-scroll">
+          <marquee scrollamount="4" onMouseOver="this.setAttribute('scrollamount', 0, 0);this.stop();" onMouseOut="this.setAttribute('scrollamount', 4, 0);this.start();">
+            <strong>
+              <p style="color:#11100e">We are happy to inform that the National Assessment and Accreditation Council (NAAC) has awarded the coveted 
+                 <span>A<strong>+</strong>
+                     <span> Grade with 3.64 CGPA</span>
+                     </span> 
+                       to Alagappa University and <span><span>Graded as Category-I University by MHRD-UGC
+                     </span>
+                   </span>
+                            &emsp;&emsp;&emsp;&emsp;<img src="assets/images/star-l.png" alt="" style="display:inline; float:none; line-height:0px; vertical-align:top;"/>&nbsp;&nbsp;Alagappa University has obtained 
+                            <span>Category – I (Category one) Status and eligible</span> to offer courses in distance learning mode without approval of the commission (UGC) (Clause 4.10) as per the Gazette of India 
+                            <span>Notification dated 12.02.2018</span>.&nbsp;&nbsp;<img src="images/star-r.png" alt="" style="display:inline; float:none; line-height:0px; vertical-align:top;"/>
+               </p>
+           </strong>
+                            
+         </marquee>
+       </div>

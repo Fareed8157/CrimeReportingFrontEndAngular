@@ -1,0 +1,299 @@
+.table-wrapper {
+    background: #fff;
+    padding: 20px;	
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
+}
+.table-title h2 {
+    margin: 6px 0 0;
+    font-size: 22px;
+}
+.table-title .add-new {
+    float: right;
+    height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: none;
+    min-width: 100px;
+    border-radius: 50px;
+    line-height: 13px;
+}
+.table-title .add-new i {
+    margin-right: 4px;
+}
+table.table {
+    table-layout: fixed;
+}
+table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+}
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+table.table th:last-child {
+    width: 100px;
+}
+table.table td a {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 5px;
+    min-width: 24px;
+}    
+table.table td a.add {
+    color: #27C46B;
+}
+table.table td a.edit {
+    color: #FFC107;
+}
+table.table td a.delete {
+    color: #E34724;
+}
+table.table td i {
+    font-size: 19px;
+}
+table.table td a.add i {
+    font-size: 24px;
+    margin-right: -1px;
+    position: relative;
+    top: 3px;
+}    
+table.table .form-control {
+    height: 32px;
+    line-height: 32px;
+    box-shadow: none;
+    border-radius: 2px;
+}
+table.table .form-control.error {
+    border-color: #f50000;
+}
+table.table td .add {
+    display: none;
+}
+
+/* preview Image */
+
+
+  /* .image-area {
+    position: relative;
+    width: 50%;
+  }
+  .image-area img{
+    max-width: 100%;
+    height: auto;
+  } */
+  .remove-image {
+    display: none;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    border-radius: 10em;
+    padding: 2px 6px 3px;
+    text-decoration: none;
+    font: 700 21px/20px sans-serif;
+    background: #555;
+    border: 3px solid #fff;
+    color: #FFF;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 2px 4px rgba(0,0,0,0.3);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+      -webkit-transition: background 0.5s;
+      transition: background 0.5s;
+    }
+    .remove-image:hover {
+     background: #E54E4E;
+      padding: 3px 7px 5px;
+      top: -11px;
+    right: -11px;
+    }
+    .remove-image:active {
+     background: #E54E4E;
+      top: -10px;
+    right: -11px;
+    }
+  
+  
+    /* img {
+      max-width: 100%;
+      height: auto;
+  }
+  
+  .item {
+      width: 120px;
+      min-height: 120px;
+      max-height: auto;
+      float: left;
+      margin: 3px;
+      padding: 3px;
+  } */
+  
+  
+  /* .image-area {
+    position: relative;
+    width: 50%;
+  }
+  .image-area img{
+    max-width: 100%;
+    height: auto;
+  } */
+  .remove-image {
+    display: none;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    border-radius: 10em;
+    padding: 2px 6px 3px;
+    text-decoration: none;
+    font: 700 21px/20px sans-serif;
+    background: #555;
+    border: 3px solid #fff;
+    color: #FFF;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 2px 4px rgba(0,0,0,0.3);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+      -webkit-transition: background 0.5s;
+      transition: background 0.5s;
+    }
+    .remove-image:hover {
+     background: #E54E4E;
+      padding: 3px 7px 5px;
+      top: -11px;
+    right: -11px;
+    }
+    .remove-image:active {
+     background: #E54E4E;
+      top: -10px;
+    right: -11px;
+    }
+  
+  
+    /* img {
+      max-width: 100%;
+      height: auto;
+  }
+  
+  .item {
+      width: 120px;
+      min-height: 120px;
+      max-height: auto;
+      float: left;
+      margin: 3px;
+      padding: 3px;
+  } */
+  
+  .image-area {
+      position: relative;
+      width: 500px;
+      height: 250px;
+      float: left;
+  }
+  
+  .image-area img {
+      max-width: 100%;
+      max-height: 100%;
+  }
+  
+  
+  
+  .hovereffect {
+      width: 80%;
+      height: 90%;
+      float: left;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      cursor: default;
+    }
+    
+    .hovereffect .overlay {
+      width: 85%;
+      height:90%;
+      position: absolute;
+      overflow: hidden;
+      top: 0;
+      left: 17px;
+      background-color: rgba(0,0,0,0.6);
+      opacity: 0;
+      filter: alpha(opacity=0);
+      -webkit-transform: translate(460px, -100px) rotate(180deg);
+      -ms-transform: translate(460px, -100px) rotate(180deg);
+      transform: translate(460px, -100px) rotate(180deg);
+      -webkit-transition: all 0.2s 0.4s ease-in-out;
+      transition: all 0.2s 0.4s ease-in-out;
+    }
+    
+    .hovereffect img {
+      display: block;
+      position: relative;
+      -webkit-transition: all 0.2s ease-in;
+      transition: all 0.2s ease-in;
+    }
+    
+    .hovereffect h2 {
+      text-transform: uppercase;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      font-size: 17px;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    
+    .hovereffect a.info {
+      display: inline-block;
+      text-decoration: none;
+      padding: 7px 14px;
+      text-transform: uppercase;
+      color: #fff;
+      border: 1px solid #fff;
+      margin: 70px 0 0 0;
+      background-color: transparent;
+      -webkit-transform: translateY(-200px);
+      -ms-transform: translateY(-200px);
+      transform: translateY(-200px);
+      -webkit-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+    }
+    
+    .hovereffect a.info:hover {
+      box-shadow: 0 0 5px #fff;
+    }
+    
+    .hovereffect:hover .overlay {
+      opacity: 1;
+      filter: alpha(opacity=100);
+      -webkit-transition-delay: 0s;
+      transition-delay: 0s;
+      -webkit-transform: translate(0px, 0px);
+      -ms-transform: translate(0px, 0px);
+      transform: translate(0px, 0px);
+    }
+    
+    .hovereffect:hover h2 {
+      -webkit-transform: translateY(0px);
+      -ms-transform: translateY(0px);
+      transform: translateY(0px);
+      -webkit-transition-delay: 0.5s;
+      transition-delay: 0.5s;
+    }
+    
+    .hovereffect:hover a.info {
+      -webkit-transform: translateY(0px);
+      -ms-transform: translateY(0px);
+      transform: translateY(0px);
+      -webkit-transition-delay: 0.3s;
+      transition-delay: 0.3s;
+    }
+
+ 
+
+    div.modal div.modal-backdrop {
+      z-index: 0;
+  }
+
+  body.modal-open div.modal-backdrop { 
+    z-index: 0; 
+    
+}

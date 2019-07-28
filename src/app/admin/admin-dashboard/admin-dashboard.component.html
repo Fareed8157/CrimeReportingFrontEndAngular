@@ -1,0 +1,93 @@
+
+<div class="card text-center" style="margin: 50px;" >
+    <div class="card-header bg-success mb-3 border-success ">
+        <h5><b style="color: white;">Slider</b></h5>
+    </div>
+    <div class="card-body" style="width: 100%">
+        <div class="container" >
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <form [formGroup]="sliderForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" (blur)="logValidationError()" [class.is-invalid]="formErrors.title" formControlName="title" class="form-control" id="title">
+                            <div *ngIf="formErrors.title">
+                                <small class="text-danger">
+                                    {{formErrors.title}}
+                                </small>              
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" (blur)="logValidationError()" [class.is-invalid]="formErrors.description" formControlName="description" class="form-control" id="description" >
+                            <div *ngIf="formErrors.description">
+                                <small class="text-danger">
+                                    {{formErrors.description}}
+                                </small>              
+                            </div>
+                        </div>
+                                    
+                        <div class="form-group"> 
+                            <label for="file">Images</label>
+                                <input type="file"  (blur)="logValidationError()" formControlName="file" class="form-control" accept="image/*" multiple (change)="onSelectFile($event)" id="file" name="file" style="height:100%">
+                            </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit"  [disabled]="sliderForm.invalid">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="container">
+                    <h1>Image Gallery</h1>
+                    <div class="row text-lg-left">
+                        <div class="col-lg-3 col-md-4 col-xs-6 hovereffect" *ngFor="let image of images; let i = index" [attr.data-index]="i" [attr.data-index]="i" [id]='i'>
+                            <a href="#" class="d-block mb-4 h-100">
+                                <img class="img-fluid img-thumbnail " [src]="image" style="height: 171px; width: fit-content;">
+                            </a>
+                            <div class="overlay">
+                                    <a class="info" href="javascript:void(0)" (click)="deleteImage(image,$event,i)"><span class="glyphicon glyphicon-trash"></span></a>
+                                </div>
+                        </div>
+                        
+                    </div>
+                
+                </div>
+                  
+            <div class="row" style="width: 100%">
+                <div class="col-sm-12">
+                    <div class="table-wrapper">
+                        <div class="table-title">
+                        <table class="table table-bordered" *ngIf="listOfEvents && listOfEvents.length">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let event of listOfEvents;let i = index">
+                                    <td>{{event.slider.title}}</td>
+                                    <td>{{event.slider.description}}</td>
+                                    <td>
+                                        <a class="edit" title="Edit" (click)="editClickButton(event.slider)" data-toggle="tooltip"><span class="glyphicon glyphicon-pencil"></span></a>
+                                        <a class="delete" title="Delete" (click)="deleteClickButton(event)" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            
+            </div>
+        </div> 
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  
+  

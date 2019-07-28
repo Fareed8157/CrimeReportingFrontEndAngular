@@ -1,0 +1,147 @@
+<div class="card" style="margin: 70px;">
+  <div class="card-header bg-success mb-3 border-success text-center">
+     <h5><b style="color: white;">FIR DETAILS</b></h5>
+  </div>
+  <div class="card-body">
+     <form [formGroup]="firForm" (ngSubmit)="onSubmit()" class="form-horizontal" action=" " method="post"  id="reg_form">
+        <fieldset>
+           <!-- row 1 -->
+           <!-- FIR Details -->
+           <div class="row justify-content-center my-row">
+              <div class="col-sm-6 my-col">
+                 <div class="form-group">
+                    <label class="control-label">Date of Crime (e.g dd-mm-yyy)</label>
+                    <div class="inputGroupContainer">
+                       <div class="input-group">
+                          <div class="input-group-prepend">
+                             <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
+                          </div>
+                          <input name="city"  placeholder="Date of Incident (e.g dd-mm-yyy)" formControlName="dateOfCrime" class="form-control"  type="date">
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-sm-6 my-col">
+                 <div class="form-group">
+                    <label class="control-label">Type Of Crime</label>
+                    <div class="selectContainer">
+                       <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                             <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
+                          </div>
+                          <select name="crime" (change)="getCrimeIndex($event.target.value)" class="form-control selectpicker" formControlName="crime" >
+                             <option value=" " >Please select</option>
+                             <option *ngFor="let crime of crimes;let i=index" [value]="crime.id" (ngModelChange)="onChange(i)">
+                                 {{crime.name}}
+                             </option>
+                          </select>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+           <div class="row justify-content-center my-row">
+              <div class="col-sm-6 my-col">
+                 <div class="form-group">
+                    <label class="control-label">Nearest Police Station</label>
+                    <div class="selectContainer">
+                       <div class="input-group">
+                          <div class="input-group-prepend">
+                             <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
+                          </div>
+                          <select name="policeStation" (change)="getPoliceStationIndex($event.target.value)" class="form-control selectpicker" formControlName="policeStation">
+                              <option value=" " >Please select</option>
+                              <option *ngFor="let policeStation of policeStatons;let i=index" [value]="policeStation.id">
+                                    {{policeStation.name}}
+                              </option>
+                              
+                          </select>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-sm-6 my-col">
+                 <!-- Text input-->
+                 <div class="form-group">
+                    <label class="control-label">Proofs</label>
+                    <div class="inputGroupContainer">
+                       <div class="input-group">
+                          <div class="input-group-prepend">
+                             <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-paperclip"></i></span>
+                          </div>
+                          <input name="files" formControlName="files" placeholder="folder.zip" class="form-control"  type="file" multiple>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+           <div class="row justify-content-center my-row">
+              <div class="col-sm-12 my-col">
+                 <div class="form-group">
+                    <label class="control-label">Fir Details  </label>
+                    <div class="inputGroupContainer boxsizingBorder">
+                       <div class="input-group boxsizingBorder">
+                          <div class="input-group-prepend">
+                             <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-pencil"></i></span>
+                          </div>
+                          <textarea class="form-control boxsizingBorder" formControlName="description" name="description" placeholder="Complaint Details  "></textarea>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+           <!-- row 6 -->
+           <div class="row justify-content-center my-row">
+              <div class="col-sm-6">
+                 <!-- Button -->
+                 <div class="form-group ">
+                    <label class="control-label"></label>
+                    <div class="">
+                       <button type="submit" class="btn btn-success regButton" ><span >Submit</span></button>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </fieldset>
+     </form>
+     <table class="table table-bordered" style="margin-top: 50px;margin-bottom: 50px">
+      <thead>
+        <tr>
+          <th scope="col">Fir No</th>
+          <th scope="col">Title</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>
+              <h5> 
+                  <a href="#" class="badge badge-success statusDivSuccess">Submitted</a>
+              </h5> 
+          </td>
+          <td>
+            <a class="view" title="view" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a>
+            <a class="delete" title="delete" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-trash"></span></a>
+          </td>
+        </tr>
+        <tr>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>
+              <h5> 
+                  <a href="#" class="badge badge-success statusDivPending">Pending</a>
+              </h5>  
+          </td>
+          <td>
+            <a class="view" title="view" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a>
+            <a class="delete" title="delete" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-trash"></span></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

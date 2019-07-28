@@ -1,0 +1,69 @@
+<div class="container-fluid">
+  <div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+        <div class="sidebar-header" >
+          <a class="navbar-brand js-scroll-trigger" href="#page-top">
+              <span class="d-block d-lg-none"><img class="img-fluid img-profile rounded-circle mx-auto mb-2 center" src="assets/images/sindhPolice.png" alt=""></span>
+              <span class="d-none d-lg-block">
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2 center" src="assets/images/iqra.jpg" alt="">
+                <b> Jqra Rajput</b>
+              </span>
+            </a>
+        </div>
+  
+        <ul class="list-unstyled components">
+          
+            <li class="active">
+                <a href="#homeSubmenu">Slider</a>
+                <!-- <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li><a href="#">Home 1</a></li>
+                    <li><a href="#">Home 2</a></li>
+                    <li><a href="#">Home 3</a></li>
+                </ul> -->
+            </li>
+            <li>
+                <a href="#">About</a>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li><a href="#">Page 1</a></li>
+                    <li><a href="#">Page 2</a></li>
+                    <li><a href="#">Page 3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Portfolio</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+  
+    </nav>
+  
+    <!-- Page Content Holder -->
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+    <!-- Modal -->
+<div class="modal fade" #deleSliderDialog id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="delSlider(deleSliderDialog)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>

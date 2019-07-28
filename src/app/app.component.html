@@ -1,0 +1,13 @@
+
+         <!-- news ticker end -->
+
+<app-header></app-header>
+<app-carousel *ngIf="router.url=='/'"></app-carousel>
+<app-body-content *ngIf="router.url=='/'"></app-body-content>
+
+    <router-outlet></router-outlet>
+<app-footer></app-footer>
+        
+      
+
+
