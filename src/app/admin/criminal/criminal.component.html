@@ -1,39 +1,78 @@
 
 <div class="card text-center" style="margin: 50px;" >
     <div class="card-header bg-success mb-3 border-success ">
-        <h5><b style="color: white;">Slider</b></h5>
+        <h5><b style="color: #ffffff;">{{title}}</b></h5>
     </div>
     <div class="card-body" style="width: 100%">
         <div class="container" >
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    <form [formGroup]="sliderForm" (ngSubmit)="onSubmit()">
+                    <form [formGroup]="criminalForm" (ngSubmit)="onSubmit()">
+                            <!-- <div class="form-group">
+                                    <label for="fir">Fir No</label>
+                                    <ng-multiselect-dropdown-angular7
+                                        name="fir"
+                                        [placeholder]="'Select Fir '"
+                                        [data]="firs"
+                                        
+                                        [settings]="dropdownSettings"
+                                        (onSelect)="onItemSelect($event)"
+                                        (onSelectAll)="onSelectAll($event)" (blur)="logValidationError()" [class.is-invalid]="formErrors.fir">
+                                    </ng-multiselect-dropdown-angular7 >                       
+                                    <div *ngIf="formErrors.fir">
+                                        <small class="text-danger">
+                                            {{formErrors.fir}}
+                                        </small>              
+                                    </div>
+                                </div> -->
+        
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" (blur)="logValidationError()" [class.is-invalid]="formErrors.title" formControlName="title" class="form-control" id="title">
-                            <div *ngIf="formErrors.title">
+                            <label for="firstName">First Name</label>
+                            <input type="text" (blur)="logValidationError()" [class.is-invalid]="formErrors.firstName" formControlName="firstName" class="form-control" id="firstName">
+                            <div *ngIf="formErrors.firstName">
                                 <small class="text-danger">
-                                    {{formErrors.title}}
+                                    {{formErrors.firstName}}
+                                </small>              
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" (blur)="logValidationError()" [class.is-invalid]="formErrors.lastName" formControlName="lastName" class="form-control" id="lastName">
+                            <div *ngIf="formErrors.lastName">
+                                <small class="text-danger">
+                                    {{formErrors.lastName}}
                                 </small>              
                             </div>
                         </div>
                         
                         <div class="form-group">
+                            <label for="nic">NIC</label>
+                            <input type="textarea" (blur)="logValidationError()" [class.is-invalid]="formErrors.nic" formControlName="nic" class="form-control" id="nic">
+                            <div *ngIf="formErrors.nic">
+                                <small class="text-danger">
+                                    {{formErrors.nic}}
+                                </small>              
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="description">Description</label>
-                            <input type="text" (blur)="logValidationError()" [class.is-invalid]="formErrors.description" formControlName="description" class="form-control" id="description" >
+                            <textarea (blur)="logValidationError()" [class.is-invalid]="formErrors.description" class="form-control boxsizingBorder" formControlName="description" name="description" placeholder="Complaint Details  "></textarea>
                             <div *ngIf="formErrors.description">
                                 <small class="text-danger">
                                     {{formErrors.description}}
                                 </small>              
                             </div>
                         </div>
-                                    
+                              
+                        
+
                         <div class="form-group"> 
                             <label for="file">Images</label>
                                 <input type="file"  (blur)="logValidationError()" formControlName="file" class="form-control" accept="image/*" multiple (change)="onSelectFile($event)" id="file" name="file" style="height:100%">
                             </div>
                         <div class="form-group">
-                            <button class="btn btn-primary" type="submit"  [disabled]="sliderForm.invalid">Save</button>
+                            <button class="btn btn-primary" type="submit"  [disabled]="criminalForm.invalid">Save</button>
                         </div>
                     </form>
                 </div>
@@ -88,5 +127,4 @@
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Launch demo modal
   </button> -->
-  
   

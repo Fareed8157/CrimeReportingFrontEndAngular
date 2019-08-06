@@ -14,8 +14,8 @@
   
         <ul class="list-unstyled components">
           
-            <li class="active">
-                <a href="#homeSubmenu">Slider</a>
+            <li >
+                <a [routerLink]="['/admin']">Slider</a>
                 <!-- <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li><a href="#">Home 1</a></li>
                     <li><a href="#">Home 2</a></li>
@@ -23,7 +23,7 @@
                 </ul> -->
             </li>
             <li>
-                <a href="#">About</a>
+                <a [routerLink]="['/admin/criminal']">Criminal</a>
                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li><a href="#">Page 1</a></li>
@@ -41,8 +41,45 @@
   
     </nav>
   
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="navbar-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#adminNavbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="adminNavbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" [routerLink]="['criminal/viewCriminal']">View Criminal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <router-outlet></router-outlet>
+        
+    </div>
     <!-- Page Content Holder -->
-    <router-outlet></router-outlet>
+    <!-- <div id="content">
+      
+    </div> -->
   </div>
 </div>
 
@@ -51,14 +88,8 @@
 <div class="modal fade" #deleSliderDialog id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
         <div class="modal-body">
-          ...
+          Do You want to remove ?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>

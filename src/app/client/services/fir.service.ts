@@ -4,6 +4,7 @@ import { PoliceStation } from '../models/PoliceStation.model';
 import { HttpClient, HttpErrorResponse} from "@angular/common/http"
 import {catchError} from "rxjs/operators"
 import { CrimeTypes } from '../models/CrimeTypes.model';
+import { Fir } from '../models/fir.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +35,9 @@ export class FirService {
     .pipe(catchError(this.handleErroor));
   }
 
+
+  saveFir(formData:FormData):Observable<any>{
+    return this.http.post(this.baseUrl+'fir',formData);
+  }
   
 }

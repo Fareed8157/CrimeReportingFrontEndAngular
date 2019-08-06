@@ -9,6 +9,8 @@ import { BodyContentComponent } from './body-content/body-content.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminModule } from './admin/admin.module';
 import { ClientModule } from './client/client.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ClientModule } from './client/client.module';
     BrowserModule,
     ClientModule,
     AdminModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SliderService } from '../services/slider.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -10,7 +11,8 @@ export class AdminComponent implements OnInit {
 
   @ViewChild('deleSliderDialog',{static: false}) deleSliderDialog: ElementRef;
 
-  constructor(private sliderServbice:SliderService) { }
+  
+  constructor(private sliderServbice:SliderService,private router:Router) { }
 
   ngOnInit() {
   }
@@ -22,5 +24,5 @@ export class AdminComponent implements OnInit {
     console.log(this.deleSliderDialog.nativeElement.display);
   }
 
-  
+
 }

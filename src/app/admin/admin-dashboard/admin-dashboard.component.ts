@@ -25,10 +25,10 @@ export class AdminDashboardComponent implements OnInit {
   public removeImages:any=[];
   public events:any=[];
   delEvent:any;
+  increment:any=0;
 
 
   @ViewChild('myDiv',{static: false}) deltSliderButton: ElementRef;
-  increment:any=0;
   // This object will hold the messages to be displayed to the user
   // Notice, each key in this object has the same name as the
   // corresponding form control
@@ -60,7 +60,6 @@ export class AdminDashboardComponent implements OnInit {
         }
       });
     this.getAllSliders();
-
     this.slider=new Slider();
     this.sliderForm=this.fb.group({
       title:['',Validators.required],
@@ -72,6 +71,9 @@ export class AdminDashboardComponent implements OnInit {
       value => {
         console.log(value);
       });
+      this.sliderForm.valueChanges.subscribe((data)=>{
+        this.logValidationError(this.sliderForm);
+      })
   }
 
   getAllSliders(){
@@ -197,7 +199,6 @@ export class AdminDashboardComponent implements OnInit {
     else{
       this.slider=new Slider();
       this.mapFormValues();
-      
       console.log("Inside map onSubmit else");
       console.log(this.formData.get('slider'));
       this.formData.append('slider',JSON.stringify(this.slider));
@@ -213,11 +214,9 @@ export class AdminDashboardComponent implements OnInit {
         console.log(err);
       });
       this.formData=new FormData();
-    }
-    
+    }  
   }
   mapFormValues(){
-    
     this.slider.title=this.sliderForm.value.title;
     this.slider.description=this.sliderForm.value.description;
     this.slider.removeImages=this.removeImages;

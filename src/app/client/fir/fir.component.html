@@ -16,8 +16,14 @@
                           <div class="input-group-prepend">
                              <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
                           </div>
-                          <input name="city"  placeholder="Date of Incident (e.g dd-mm-yyy)" formControlName="dateOfCrime" class="form-control"  type="date">
-                       </div>
+                          <input name="dateOfCrime" bsDatepicker (blur)="logValidationError()" [class.is-invalid]="formErrors.dateOfCrime" placeholder="Date of Incident (e.g dd-mm-yyy)"  formControlName="dateOfCrime" class="form-control"  type="text">
+                          
+                        </div>
+                        <div *ngIf="formErrors.dateOfCrime">
+                           <small class="text-danger">
+                              {{formErrors.dateOfCrime}}
+                           </small>              
+                        </div>
                     </div>
                  </div>
               </div>
@@ -29,13 +35,18 @@
                           <div class="input-group-prepend">
                              <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
                           </div>
-                          <select name="crime" (change)="getCrimeIndex($event.target.value)" class="form-control selectpicker" formControlName="crime" >
+                          <select  (blur)="logValidationError()" [class.is-invalid]="formErrors.crime" name="crime" (change)="getCrimeIndex($event.target.value)" class="form-control selectpicker" formControlName="crime" >
                              <option value=" " >Please select</option>
                              <option *ngFor="let crime of crimes;let i=index" [value]="crime.id" (ngModelChange)="onChange(i)">
                                  {{crime.name}}
                              </option>
                           </select>
                        </div>
+                       <div *ngIf="formErrors.crime">
+                           <small class="text-danger">
+                              {{formErrors.crime}}
+                           </small>              
+                        </div>
                     </div>
                  </div>
               </div>
@@ -49,7 +60,7 @@
                           <div class="input-group-prepend">
                              <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
                           </div>
-                          <select name="policeStation" (change)="getPoliceStationIndex($event.target.value)" class="form-control selectpicker" formControlName="policeStation">
+                          <select name="policeStation" (blur)="logValidationError()" [class.is-invalid]="formErrors.policeStation" (change)="getPoliceStationIndex($event.target.value)" class="form-control selectpicker" formControlName="policeStation">
                               <option value=" " >Please select</option>
                               <option *ngFor="let policeStation of policeStatons;let i=index" [value]="policeStation.id">
                                     {{policeStation.name}}
@@ -57,6 +68,11 @@
                               
                           </select>
                        </div>
+                       <div *ngIf="formErrors.policeStation">
+                        <small class="text-danger">
+                           {{formErrors.policeStation}}
+                        </small>              
+                     </div>
                     </div>
                  </div>
               </div>
@@ -69,8 +85,9 @@
                           <div class="input-group-prepend">
                              <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-paperclip"></i></span>
                           </div>
-                          <input name="files" formControlName="files" placeholder="folder.zip" class="form-control"  type="file" multiple>
-                       </div>
+                          <input name="files" (change)="onSelectFile($event)" formControlName="files" placeholder="folder.zip" class="form-control"  type="file" multiple>
+                          <button class="btn btn-success " (click)="resetFiles()">Reset</button>
+                        </div>
                     </div>
                  </div>
               </div>
@@ -84,8 +101,13 @@
                           <div class="input-group-prepend">
                              <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-pencil"></i></span>
                           </div>
-                          <textarea class="form-control boxsizingBorder" formControlName="description" name="description" placeholder="Complaint Details  "></textarea>
+                          <textarea (blur)="logValidationError()" [class.is-invalid]="formErrors.description" class="form-control boxsizingBorder" formControlName="description" name="description" placeholder="Complaint Details  "></textarea>
                        </div>
+                       <div *ngIf="formErrors.description">
+                        <small class="text-danger">
+                           {{formErrors.description}}
+                        </small>              
+                     </div>
                     </div>
                  </div>
               </div>
@@ -97,7 +119,7 @@
                  <div class="form-group ">
                     <label class="control-label"></label>
                     <div class="">
-                       <button type="submit" class="btn btn-success regButton" ><span >Submit</span></button>
+                       <button type="submit" [disabled]="firForm.invalid" class="btn btn-success regButton"><span >Submit</span></button>
                     </div>
                  </div>
               </div>
