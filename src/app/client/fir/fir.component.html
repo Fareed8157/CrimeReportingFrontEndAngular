@@ -2,7 +2,32 @@
   <div class="card-header bg-success mb-3 border-success text-center">
      <h5><b style="color: white;">FIR DETAILS</b></h5>
   </div>
-  <div class="card-body">
+  
+  <div id="outer">
+     <div id="inner">
+      <select value="1" class="form-control selectpicker" data-width="fit" (change)="getLanguage($event.target.value)">
+         <option value="1" selected>
+            English
+         </option>
+         <option value="2">
+            Sindhi
+         </option>
+      </select>
+     </div>
+  </div>
+   <div class="card-header text-center" style="background: none">
+      <div class="alert alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+         <h4 class="alert-heading">Note!</h4>
+         <p>Do not give false Information or accusing any one intentionally other wise same FIR will be applied against You.</p>
+         <hr>
+         <p class="mb-0">Thank You.</p>
+         
+       </div>
+   </div>
+  <div class="card-body center">
      <form [formGroup]="firForm" (ngSubmit)="onSubmit()" class="form-horizontal" action=" " method="post"  id="reg_form">
         <fieldset>
            <!-- row 1 -->
@@ -10,7 +35,7 @@
            <div class="row justify-content-center my-row">
               <div class="col-sm-6 my-col">
                  <div class="form-group">
-                    <label class="control-label">Date of Crime (e.g dd-mm-yyy)</label>
+                    <label class="control-label">{{languageResponse.dateOfCrime}}</label>
                     <div class="inputGroupContainer">
                        <div class="input-group">
                           <div class="input-group-prepend">
@@ -28,23 +53,22 @@
                  </div>
               </div>
               <div class="col-sm-6 my-col">
-                 <div class="form-group">
-                    <label class="control-label">Type Of Crime</label>
-                    <div class="selectContainer">
-                       <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                             <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
-                          </div>
-                          <select  (blur)="logValidationError()" [class.is-invalid]="formErrors.crime" name="crime" (change)="getCrimeIndex($event.target.value)" class="form-control selectpicker" formControlName="crime" >
-                             <option value=" " >Please select</option>
-                             <option *ngFor="let crime of crimes;let i=index" [value]="crime.id" (ngModelChange)="onChange(i)">
-                                 {{crime.name}}
-                             </option>
-                          </select>
-                       </div>
-                       <div *ngIf="formErrors.crime">
+                 <div class="form-group" >
+                    <label class="control-label">{{languageResponse.typeOfCrime}}</label>
+                    <div class="selectContainer" formControlName="crime">
+                          
+                          <ng-multiselect-dropdown-angular7 
+                              name="crime"
+                              [data]="firCrimeTypes"
+                              [settings]="dropdownSettings"
+                              (onSelect)="onItemSelect($event)"
+                              (onSelectAll)="onSelectAll($event)" 
+                              (onDropdownClose)="onDropdownClose()"
+                              (blur)="logValidationError()" [class.is-invalid]="formErrors.crime">    
+                           </ng-multiselect-dropdown-angular7 >    
+                       <div *ngIf="flagForValidation">
                            <small class="text-danger">
-                              {{formErrors.crime}}
+                              Crime Type is required
                            </small>              
                         </div>
                     </div>
@@ -54,7 +78,7 @@
            <div class="row justify-content-center my-row">
               <div class="col-sm-6 my-col">
                  <div class="form-group">
-                    <label class="control-label">Nearest Police Station</label>
+                    <label class="control-label">{{languageResponse.nearestPoliceStation}}</label>
                     <div class="selectContainer">
                        <div class="input-group">
                           <div class="input-group-prepend">
@@ -79,7 +103,7 @@
               <div class="col-sm-6 my-col">
                  <!-- Text input-->
                  <div class="form-group">
-                    <label class="control-label">Proofs</label>
+                    <label class="control-label">{{languageResponse.proofs}}</label>
                     <div class="inputGroupContainer">
                        <div class="input-group">
                           <div class="input-group-prepend">
@@ -93,9 +117,49 @@
               </div>
            </div>
            <div class="row justify-content-center my-row">
+              <div class="col-sm-6 my-col">
+                 <div class="form-group">
+                    <label class="control-label">{{languageResponse.placeOfIncident}}</label>
+                    <div class="inputGroupContainer">
+                       <div class="input-group">
+                          <div class="input-group-prepend">
+                             <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-home"></i></span>
+                          </div>
+                          <textarea name="placeOfIncident" (blur)="logValidationError()" [class.is-invalid]="formErrors.placeOfIncident" placeholder="Place of Incident"  formControlName="placeOfIncident" class="form-control" ></textarea>
+                          
+                        </div>
+                        <div *ngIf="formErrors.placeOfIncident">
+                           <small class="text-danger">
+                              {{formErrors.placeOfIncident}}
+                           </small>              
+                        </div>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-sm-6 my-col">
+                  <div class="form-group">
+                     <label class="control-label">{{languageResponse.addressOfcomplainant}}</label>
+                     <div class="inputGroupContainer">
+                        <div class="input-group">
+                           <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-home"></i></span>
+                           </div>
+                           <textarea name="addressOfcomplainant" (blur)="logValidationError()" [class.is-invalid]="formErrors.addressOfcomplainant" placeholder="Address Of Complainant"  formControlName="addressOfcomplainant" class="form-control" ></textarea>
+                           
+                         </div>
+                         <div *ngIf="formErrors.addressOfcomplainant">
+                            <small class="text-danger">
+                               {{formErrors.addressOfcomplainant}}
+                            </small>              
+                         </div>
+                     </div>
+                  </div>
+               </div>
+           </div>
+           <div class="row justify-content-center my-row">
               <div class="col-sm-12 my-col">
                  <div class="form-group">
-                    <label class="control-label">Fir Details  </label>
+                    <label class="control-label">{{languageResponse.firDetails}}</label>
                     <div class="inputGroupContainer boxsizingBorder">
                        <div class="input-group boxsizingBorder">
                           <div class="input-group-prepend">
@@ -130,38 +194,24 @@
       <thead>
         <tr>
           <th scope="col">Fir No</th>
-          <th scope="col">Title</th>
           <th scope="col">Status</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>Mark</td>
-          <td>Otto</td>
+      <tbody >
+        <tr *ngFor="let fir of userFirs">
+          <td>{{fir.id}}</td>
           <td>
               <h5> 
-                  <a href="#" class="badge badge-success statusDivSuccess">Submitted</a>
+                  <a [ngClass]="getColor(fir.status)">{{pendingOrSubmitted}}</a>
               </h5> 
           </td>
           <td>
-            <a class="view" title="view" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a>
+            <a (click)="viewFir(fir.id)" class="view" title="view" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a>
             <a class="delete" title="delete" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-trash"></span></a>
           </td>
         </tr>
-        <tr>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>
-              <h5> 
-                  <a href="#" class="badge badge-success statusDivPending">Pending</a>
-              </h5>  
-          </td>
-          <td>
-            <a class="view" title="view" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a>
-            <a class="delete" title="delete" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-trash"></span></a>
-          </td>
-        </tr>
+        
       </tbody>
     </table>
   </div>

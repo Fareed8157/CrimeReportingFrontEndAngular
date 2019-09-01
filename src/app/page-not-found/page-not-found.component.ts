@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginAuthService } from '../login-auth.service';
 
 @Component({
   selector: 'app-page-not-found',
@@ -8,9 +9,15 @@ import { Router } from '@angular/router';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  public currentStatus:any;
+  constructor(public router:Router,private authService:LoginAuthService){
+    
+    this.authService.isLoggedIn();
+    console.log(this.currentStatus);
+  }
 
   ngOnInit() {
+
   }
 
   gotoHome(){

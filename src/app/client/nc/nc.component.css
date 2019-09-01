@@ -1,0 +1,78 @@
+.card:hover{
+    -webkit-box-shadow: 1px 9px 40px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+    -box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+  }
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+
+  /* table css */
+  table.table td a {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 5px;
+    min-width: 24px;
+}    
+table.table td a.add {
+    color: #27C46B;
+}
+table.table td a.view {
+    color: #FFC107;
+}
+table.table td a.delete {
+    color: #E34724;
+}
+table.table td i {
+    font-size: 19px;
+}
+table.table td a.add i {
+    font-size: 24px;
+    margin-right: -1px;
+    position: relative;
+    top: 3px;
+}  
+
+/* badge css */
+.statusDivSuccess{
+  background-color: #4CAF50;
+box-shadow: 5px 10px 10px grey;
+color: white;
+
+} 
+.statusDivPending{
+  background-color: #E34724;
+box-shadow: 5px 10px 10px grey;
+color: white;
+
+
+} 
+.statusDivSuccess:hover{
+  background: #1B5E20;
+  color: inherit;
+  color: aliceblue;
+
+} 
+
+.statusDivPending:hover{
+  background: #FF5722;
+  color: inherit;
+  color: aliceblue;
+} 
+
+/* center english dropdown */
+#inner {
+    display: table;
+    margin: 0 auto;
+  }
+  
+  #outer {
+    width:100%
+  }
+  
+  .center {
+    text-align: center;
+  }
+
+  

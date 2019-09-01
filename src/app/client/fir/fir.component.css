@@ -108,19 +108,23 @@ table.table td a.add i {
 
 /* badge css */
 .statusDivSuccess{
-  background-color: #1B5E20;
+  background-color: #4CAF50;
 box-shadow: 5px 10px 10px grey;
+color: white;
 
 } 
 .statusDivPending{
   background-color: #E34724;
 box-shadow: 5px 10px 10px grey;
+color: white;
+
 
 } 
 .statusDivSuccess:hover{
-  background: #4CAF50;
+  background: #1B5E20;
   color: inherit;
   color: aliceblue;
+
 } 
 
 .statusDivPending:hover{
@@ -128,3 +132,17 @@ box-shadow: 5px 10px 10px grey;
   color: inherit;
   color: aliceblue;
 } 
+
+/* center english dropdown */
+#inner {
+  display: table;
+  margin: 0 auto;
+}
+
+#outer {
+  width:100%
+}
+
+.center {
+  text-align: center;
+}

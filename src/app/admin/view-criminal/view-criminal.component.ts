@@ -30,4 +30,13 @@ export class ViewCriminalComponent implements OnInit {
   editCriminal(id:any){
     this.router.navigate(['admin/criminal/edit',id]);
   }
+
+  deleteCriminal(criminal:any){
+    let indexOfCriminal=this.criminals.indexOf(criminal);
+    this.criminalService.deleteCriminal(criminal.criminal.id).subscribe((response)=>{
+      this.criminals.splice(indexOfCriminal,1);
+      console.log(response);
+    });
+    console.log(indexOfCriminal);
+  }
 }

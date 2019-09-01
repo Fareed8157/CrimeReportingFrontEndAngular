@@ -1,0 +1,133 @@
+<div class="card" style="margin: 70px;">
+    <div class="card-header bg-success mb-3 border-success text-center">
+       <h5><b style="color: white;">NC DETAILS</b></h5>
+    </div>
+    
+    <div id="outer">
+       <div id="inner">
+        <select value="1" class="form-control selectpicker" data-width="fit" (change)="getLanguage($event.target.value)">
+           <option value="1" selected>
+              English
+           </option>
+           <option value="2">
+              Sindhi
+           </option>
+        </select>
+       </div>
+    </div>
+     
+    <div class="card-body center">
+       <form [formGroup]="ncForm" (ngSubmit)="onSubmit()" class="form-horizontal" action=" " method="post"  id="reg_form">
+          <fieldset>
+             <!-- row 1 -->
+             <!-- FIR Details -->
+             <div class="row justify-content-center my-row">
+                <div class="col-sm-6 my-col">
+                   <div class="form-group">
+                      <label class="control-label">{{languageResponse.ncType}}</label>
+                      <div class="selectContainer">
+                         <div class="input-group">
+                            <div class="input-group-prepend">
+                               <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
+                            </div>
+                            <select name="ncType" (blur)="logValidationError()" [class.is-invalid]="formErrors.ncType" (change)="getNCTypeIndex($event.target.value)" class="form-control selectpicker" formControlName="ncType">
+                                <option value=" " >Please select</option>
+                                <option *ngFor="let ncType of ncTypes;let i=index" [value]="ncType.id">
+                                      {{ncType.name}}
+                                </option>
+                                
+                            </select>
+                         </div>
+                         <div *ngIf="formErrors.ncType">
+                          <small class="text-danger">
+                             {{formErrors.ncType}}
+                          </small>              
+                       </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-sm-6 my-col">
+                    <div class="form-group">
+                       <label class="control-label">{{languageResponse.nearestPoliceStation}}</label>
+                       <div class="selectContainer">
+                          <div class="input-group">
+                             <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
+                             </div>
+                             <select name="policeStation" (blur)="logValidationError()" [class.is-invalid]="formErrors.policeStation" (change)="getPoliceStationIndex($event.target.value)" class="form-control selectpicker" formControlName="policeStation">
+                                 <option value=" " >Please select</option>
+                                 <option *ngFor="let policeStation of policeStatons;let i=index" [value]="policeStation.id">
+                                       {{policeStation.name}}
+                                 </option>
+                                 
+                             </select>
+                          </div>
+                          <div *ngIf="formErrors.policeStation">
+                           <small class="text-danger">
+                              {{formErrors.policeStation}}
+                           </small>              
+                        </div>
+                       </div>
+                    </div>
+                 </div>
+             </div>
+             <div class="row justify-content-center my-row">
+                <div class="col-sm-12 my-col">
+                   <div class="form-group">
+                      <label class="control-label">{{languageResponse.ncDescription}}</label>
+                      <div class="inputGroupContainer boxsizingBorder">
+                         <div class="input-group boxsizingBorder">
+                            <div class="input-group-prepend">
+                               <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-pencil"></i></span>
+                            </div>
+                            <textarea (blur)="logValidationError()" [class.is-invalid]="formErrors.description" class="form-control boxsizingBorder" formControlName="description" name="description" placeholder="Complaint Details  "></textarea>
+                         </div>
+                         <div *ngIf="formErrors.description">
+                          <small class="text-danger">
+                             {{formErrors.description}}
+                          </small>              
+                       </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             <!-- row 6 -->
+             <div class="row justify-content-center my-row">
+                <div class="col-sm-6">
+                   <!-- Button -->
+                   <div class="form-group ">
+                      <label class="control-label"></label>
+                      <div class="">
+                         <button type="submit" [disabled]="ncForm.invalid" class="btn btn-success regButton"><span >Submit</span></button>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </fieldset>
+       </form>
+       <table class="table table-bordered" style="margin-top: 50px;margin-bottom: 50px">
+        <thead>
+          <tr>
+            <th scope="col">NC No</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let nc of ncs">
+            <td>{{nc.id}}</td>
+            <td>
+                <h5> 
+                    <a [ngClass]="getColor(nc.status)">{{pendingOrSubmitted}}</a>
+                </h5> 
+            </td>
+            <td >
+              <a  (click)="viewNC(nc.id)" class="view" title="view" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

@@ -92,33 +92,7 @@
                 
                 </div>
                   
-            <div class="row" style="width: 100%">
-                <div class="col-sm-12">
-                    <div class="table-wrapper">
-                        <div class="table-title">
-                        <table class="table table-bordered" *ngIf="listOfEvents && listOfEvents.length">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let event of listOfEvents;let i = index">
-                                    <td>{{event.slider.title}}</td>
-                                    <td>{{event.slider.description}}</td>
-                                    <td>
-                                        <a class="edit" title="Edit" (click)="editClickButton(event.slider)" data-toggle="tooltip"><span class="glyphicon glyphicon-pencil"></span></a>
-                                        <a class="delete" title="Delete" (click)="deleteClickButton(event)" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-trash"></span></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
             
-            </div>
         </div> 
     </div>
 </div>

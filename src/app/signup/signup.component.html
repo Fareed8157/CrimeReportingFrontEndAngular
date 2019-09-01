@@ -1,0 +1,392 @@
+        <!-- Tabs -->
+        <section id="tabs">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xs-12 ">
+                     <nav>
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                           <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Sign Up</a>
+                           <a *ngIf="!userService.roleMatch('TECHNICAL')" class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Login</a>
+                        </div>
+                     </nav>
+                     <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                              <div class="card" style="margin: 70px;">
+                                    <div class="card-header bg-success mb-3 border-success text-center">
+                                       <h5><b style="color: white;">{{cardTitle}}</b></h5>
+                                    </div>
+                                    
+                                    <div class="card-body center">
+                                
+                                       <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="form-horizontal" action=" " method="post"  id="reg_form">
+                                          <fieldset>
+                                             <!-- row 1 -->
+                                             <!-- FIR Details -->
+                                             <div class="row justify-content-center my-row">
+                                                <div class="col-sm-6 my-col">
+                                                   <div class="form-group">
+                                                      <label class="control-label">First Name</label>
+                                                      <div class="inputGroupContainer">
+                                                         <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                               <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
+                                                            </div>
+                                                            <input name="firstName" (blur)="logValidationError()" [class.is-invalid]="formErrors.firstName" placeholder="Ghulam Fareed"  formControlName="firstName" class="form-control"  type="text">
+                                                            
+                                                          </div>
+                                                          <div *ngIf="formErrors.firstName">
+                                                             <small class="text-danger">
+                                                                {{formErrors.firstName}}
+                                                             </small>              
+                                                          </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="col-sm-6 my-col">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Last Name</label>
+                                                        <div class="inputGroupContainer">
+                                                           <div class="input-group">
+                                                              <div class="input-group-prepend">
+                                                                 <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
+                                                              </div>
+                                                              <input name="lastName" (blur)="logValidationError()"  [class.is-invalid]="formErrors.lastName" placeholder="Ghulam Fareed"  formControlName="lastName" class="form-control"  type="text">
+                                                            </div>
+                                                            <div *ngIf="formErrors.lastName">
+                                                               <small class="text-danger">
+                                                                  {{formErrors.lastName}}
+                                                               </small>              
+                                                            </div>
+                                                        </div>
+                                                     </div>
+                                                </div>
+                                             </div>
+                                             <div class="row justify-content-center my-row">
+                                                <div class="col-sm-6 my-col">
+                                                   <div class="form-group">
+                                                      <label class="control-label">Father Name</label>
+                                                      <div class="inputGroupContainer">
+                                                         <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                               <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
+                                                            </div>
+                                                            <input name="fatherName" (blur)="logValidationError()" [class.is-invalid]="formErrors.fatherName" placeholder="Abdul Hameed"  formControlName="fatherName" class="form-control"  type="text">
+                                                            
+                                                          </div>
+                                                          <div *ngIf="formErrors.fatherName">
+                                                             <small class="text-danger">
+                                                                {{formErrors.fatherName}}
+                                                             </small>              
+                                                          </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="col-sm-6 my-col">
+                                                    <div class="form-group">
+                                                        <label class="control-label">{{cityOrPoliceStation}}</label>
+                                                        <div class="selectContainer">
+                                                           <div class="input-group">
+                                                              <div class="input-group-prepend">
+                                                                 <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
+                                                              </div>
+                                                              <select name="cities" (blur)="logValidationError()" [class.is-invalid]="formErrors.cities" (change)="getCityIndex($event.target.value)" class="form-control selectpicker" formControlName="cities">
+                                                                  <option value=" " >Please select</option>
+                                                                  <option *ngFor="let city of cities;let i=index" [value]="city.id">
+                                                                        {{city.name}}
+                                                                  </option>
+                                                                  
+                                                              </select>
+                                                           </div>
+                                                           <div *ngIf="formErrors.cities">
+                                                            <small class="text-danger">
+                                                               {{formErrors.cities}}
+                                                            </small>              
+                                                         </div>
+                                                        </div>
+                                                     </div>
+                                                </div>
+                                             </div>
+                                             <div class="row justify-content-center my-row">
+                                                <div class="col-sm-6 my-col">
+                                                   <div class="form-group">
+                                                      <label class="control-label">Email</label>
+                                                      <div class="inputGroupContainer">
+                                                         <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                               <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-envelope"></i></span>
+                                                            </div>
+                                                            <input name="email" (blur)="logValidationError()" (blur)="checkDuplicatEmail($event.target.value)" [class.is-invalid]="formErrors.email" placeholder="fareed@gmail.com"  formControlName="email" class="form-control"  type="email">
+                                                            
+                                                          </div>
+                                                          <div *ngIf="formErrors.email">
+                                                             <small class="text-danger">
+                                                                {{formErrors.email}}
+                                                             </small>              
+                                                          </div>
+                                                          <div *ngIf="isEmailExist">
+                                                            <small class="text-danger">
+                                                               Email already Exist
+                                                            </small>              
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="col-sm-6 my-col">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Password</label>
+                                                        <div class="inputGroupContainer">
+                                                           <div class="input-group">
+                                                              <div class="input-group-prepend">
+                                                                 <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-lock"></i></span>
+                                                              </div>
+                                                              <input name="password" (blur)="logValidationError()" [class.is-invalid]="formErrors.email" placeholder="******"  formControlName="password" class="form-control"  type="password">
+                                                              
+                                                            </div>
+                                                            <div *ngIf="formErrors.password">
+                                                               <small class="text-danger">
+                                                                  {{formErrors.password}}
+                                                               </small>              
+                                                            </div>
+                                                        </div>
+                                                     </div>
+                                                </div>
+                                             </div>
+                                             <div class="row justify-content-center my-row">
+                                                <div class="col-sm-6 my-col">
+                                                   <div class="form-group">
+                                                      <label class="control-label">Mobile No</label>
+                                                      <div class="inputGroupContainer">
+                                                         <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                               <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-phone"></i></span>
+                                                            </div>
+                                                            <input  name="phone" (blur)="logValidationError()" (blur)="checkDuplicate($event.target.value)" [class.is-invalid]="formErrors.phone" placeholder="+923060342843"  formControlName="phone" class="form-control"  type="text">
+                                                            
+                                                          </div>
+                                                          <div *ngIf="formErrors.phone">
+                                                             <small class="text-danger">
+                                                                {{formErrors.phone}}
+                                                             </small>              
+                                                          </div>
+                                                          <div *ngIf="isExist">
+                                                            <small class="text-danger">
+                                                               Phone Number already Exist
+                                                            </small>              
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="col-sm-6 my-col">
+                                                    <div class="form-group">
+                                                        <label class="control-label">NIC</label>
+                                                        <div class="inputGroupContainer">
+                                                           <div class="input-group">
+                                                              <div class="input-group-prepend">
+                                                                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-id-card"></i></span>
+                                                              </div>
+                                                              <input name="nic" (blur)="logValidationError()" (blur)="checkDuplicatNic($event.target.value)" [class.is-invalid]="formErrors.nic" placeholder="4520406778395"  formControlName="nic" class="form-control"  type="text">
+                                                              
+                                                            </div>
+                                                            <div *ngIf="formErrors.nic">
+                                                               <small class="text-danger">
+                                                                  {{formErrors.nic}}
+                                                               </small>              
+                                                            </div>
+                                                            <div *ngIf="isNICExist">
+                                                                <small class="text-danger">
+                                                                   Nic Number already Exist
+                                                                </small>              
+                                                             </div>
+                                                        </div>
+                                                     </div>
+                                                </div>
+                                             </div>
+                                            <div class="row justify-content-center my-row" *ngIf="userService.roleMatch('TECHNICAL')">
+                                                <div class="col-sm-12 my-col">
+                                                      <div class="form-group">
+                                                            <label class="control-label">Role</label>
+                                                            <div class="selectContainer">
+                                                               <div class="input-group">
+                                                                  <div class="input-group-prepend">
+                                                                     <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
+                                                                  </div>
+                                                                  <select name="roles" (blur)="logValidationError()" [class.is-invalid]="formErrors.roles" (change)="getIndex($event.target.value)" class="form-control selectpicker" formControlName="roles">
+                                                                      <option value=" " >Please select</option>
+                                                                      <option value="1"> TECHNICAL </option>
+                                                                      <option value="2"> ADMIN </option>
+                                                                  </select>
+                                                               </div>
+                                                               <div *ngIf="formErrors.roles">
+                                                                <small class="text-danger">
+                                                                   {{formErrors.roles}}
+                                                                </small>              
+                                                             </div>
+                                                            </div>
+                                                         </div>
+                                                </div>
+                                            </div>
+                                             <div class="row justify-content-center my-row">
+                                                <div class="col-sm-12 my-col">
+                                                   <div class="form-group">
+                                                      <label class="control-label">Address</label>
+                                                      <div class="inputGroupContainer boxsizingBorder">
+                                                         <div class="input-group boxsizingBorder">
+                                                            <div class="input-group-prepend">
+                                                               <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-home"></i></span>
+                                                            </div>
+                                                            <textarea (blur)="logValidationError()" [class.is-invalid]="formErrors.address" class="form-control boxsizingBorder" formControlName="address" name="address" placeholder="Address"></textarea>
+                                                         </div>
+                                                         <div *ngIf="formErrors.address">
+                                                          <small class="text-danger">
+                                                             {{formErrors.address}}
+                                                          </small>              
+                                                       </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <!-- row 6 -->
+                                             <div class="row justify-content-center my-row">
+                                                <div class="col-sm-6">
+                                                   <!-- Button -->
+                                                   <div class="form-group ">
+                                                      <label class="control-label"></label>
+                                                      <div class="">
+                                                         <button type="submit" [disabled]="signUpForm.invalid" class="btn btn-success regButton"><span >Submit</span></button>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </fieldset>
+                                       </form>
+                                    </div>
+                              </div>
+                           <div style="visibility: hidden">
+                              Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+                           </div>
+                        </div>
+                        <div  class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                           <div class="card" style="margin: 70px;">
+                              <div class="card-header bg-success mb-3 border-success text-center">
+                                 <h5><b style="color: white;">Login</b></h5>
+                              </div>   
+                              <div class="card-body center">
+                                 <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="form-horizontal" action=" " method="post"  id="reg_form">
+                                    <fieldset>
+                                       <div class="row justify-content-center my-row">
+                                                <div class="col-sm-6 my-col">
+                                                   <div class="form-group">
+                                                      <label class="control-label">Email/Phone</label>
+                                                      <div class="inputGroupContainer">
+                                                         <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                               <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
+                                                            </div>
+                                                            <input name="emailOrPhone" (blur)="logValidationErrorLogin()" [class.is-invalid]="formErrors.emailOrPhone" placeholder="+923153509821"  formControlName="emailOrPhone" class="form-control"  type="text">
+                                                            
+                                                          </div>
+                                                          <div *ngIf="formErrors.emailOrPhone">
+                                                             <small class="text-danger">
+                                                                {{formErrors.emailOrPhone}}
+                                                             </small>              
+                                                          </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="col-sm-6 my-col">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Password</label>
+                                                        <div class="inputGroupContainer">
+                                                           <div class="input-group">
+                                                              <div class="input-group-prepend">
+                                                                 <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-lock"></i></span>
+                                                              </div>
+                                                              <input name="password" (blur)="logValidationErrorLogin()"  [class.is-invalid]="formErrors.password" placeholder="*****"  formControlName="password" class="form-control"  type="password">
+                                                            </div>
+                                                            <div *ngIf="formErrors.password">
+                                                               <small class="text-danger">
+                                                                  {{formErrors.password}}
+                                                               </small>              
+                                                            </div>
+                                                        </div>
+                                                     </div>
+                                                </div>
+                                       </div>
+                                       <div class="row justify-content-center my-row">
+                                             <div class="col-sm-6">
+                                                <!-- Button -->
+                                                <div class="form-group ">
+                                                   <label class="control-label"></label>
+                                                   <div class="">
+                                                      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-success regButton"><span >Login</span></button>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                       </div>
+                                       <div class="row justify-content-center my-row text-center text-muted delimiter">
+                                             <button type="button" (click)="resendCode()" class="btn btn-link">
+                                                Forget Password?
+                                              </button>
+                                          </div>
+                                    </fieldset>         
+                                 </form>
+                              </div>
+                           </div>
+                           <div style="visibility: hidden">
+                              Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+                           </div>
+                        </div>
+                      </div>
+                  
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- ./Tabs -->
+
+  <button id="openModalButton" style="visibility: hidden" data-toggle="modal" data-target="#exampleModal">Open Modal</button>
+
+    <!-- Modal -->
+<div class="modal fade" #deleSliderDialog id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+                <div id="twoFaAlertSuccess" class="alert alert-success alert-dismissible fade show"
+                role="alert">
+                        {{errorMessage}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div id="twoFaAlertDanger" class="alert alert-danger alert-dismissible fade show"
+                role="alert">
+                        {{errorMessage}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+            <form [formGroup]="twoFaVer" (ngSubmit)="verifyTwoFa()" class="form-horizontal" action=" ">
+                <div class="form-group">
+                    <input name="twoFa" (blur)="logValidationError()"  [class.is-invalid]="formErrors.twoFa" placeholder="4520406778395"  formControlName="twoFa" class="form-control"  type="text">
+                </div>
+                <button type="button" [disabled]="twoFaVer.invalid" (click)="verifyTwoFa()" class="btn btn-info btn-block btn-round">Verify</button>
+            </form>
+        <div class="text-center text-muted delimiter">
+           <button type="button" (click)="resendCode()" style="color: #263238" class="btn btn-link ">
+              Resend Code?
+            </button>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="closeButton" class="btn btn-secondary"  data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  

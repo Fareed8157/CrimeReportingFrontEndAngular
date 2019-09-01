@@ -251,3 +251,32 @@ ul.CTAs a {
   margin-left: auto;
   margin-right: auto;
 }
+
+.badge-notification {
+    position: relative;
+    margin-right: 10px;
+  }
+  .badge-notification[data-badge]::after {
+    content: attr(data-badge);
+      position: absolute;
+      top: -11px;
+      right: -10px;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      width: 22px;
+      height: 22px;
+    line-height: 22px;
+    font-size: 12px;
+    font-weight: 600;
+      border-radius: 50%;
+    background: #b71c1c;
+    color: #fff;
+  }
+  span.badge-notification {
+    margin-right: 24px;
+  }
+  span.badge-notification[data-badge]::after {
+    top: -11px;
+    right: -24px;
+  }

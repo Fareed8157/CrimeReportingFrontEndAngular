@@ -1,0 +1,24 @@
+<table class="table table-bordered" style="margin-top: 50px;margin-bottom: 50px">
+        <thead>
+          <tr>
+            <th scope="col">NC No</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let nc of ncs">
+            <td>{{nc.id}}</td>
+            <td>
+                    <h5>
+                        <mat-slide-toggle (click)="toggleButton(nc.id)" [(ngModel)]="nc.status"></mat-slide-toggle> 
+                        <!-- <a [ngClass]="getColor(fir.status)">{{pendingOrSubmitted}}</a> -->
+                    </h5> 
+                </td>
+            <td >
+              <a  (click)="viewNC(nc.id)" class="view" title="view" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>

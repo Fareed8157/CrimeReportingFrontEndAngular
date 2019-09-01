@@ -22,6 +22,12 @@
                     <li><a href="#">Home 3</a></li>
                 </ul> -->
             </li>
+            <li >
+                <a [routerLink]="['/admin/viewFirs']">Firs <span class="badge badge-danger">{{noOfFirs}}</span></a>
+            </li>
+            <li >
+                <a [routerLink]="['/admin/viewNCs']">NCs <span class="badge badge-danger">{{noOfNCs}}</span></a>
+            </li>
             <li>
                 <a [routerLink]="['/admin/criminal']">Criminal</a>
                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>

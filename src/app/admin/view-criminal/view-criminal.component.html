@@ -2,6 +2,7 @@
         <div class="row">
            <div class="col-md-3" *ngFor="let criminal of criminals; let i=index">
               <div class="card shadow">
+                 
                  <div class="card-header ">
                     <h5>
                         <b>Inmate</b> 
@@ -58,7 +59,7 @@
                         </button>
                         <button type="button" (click)="editCriminal(criminal.criminal.id)" style="background: #009688;" class="btn btn-light btn-circle btn-lg"><i class="fa fa-pencil"></i>
                         </button>
-                        <button type="button" style="background: #F44336;" class="btn btn-light btn-circle btn-lg"><i class="fa fa-trash"></i>
+                        <button type="button" (click)="deleteCriminal(criminal)" style="background: #F44336;" class="btn btn-light btn-circle btn-lg"><i class="fa fa-trash"></i>
                         </button>
                  </div>
               </div>

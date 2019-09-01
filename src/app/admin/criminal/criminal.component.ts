@@ -85,6 +85,7 @@ export class CriminalComponent implements OnInit {
     //   itemsShowLimit: 3,
     //   allowSearchFilter: true
     //     };
+    
     this.criminalForm=this.fb.group({
       firstName:['',Validators.required],
       lastName:['',Validators.required],

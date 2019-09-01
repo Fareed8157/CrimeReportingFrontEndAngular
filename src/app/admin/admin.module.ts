@@ -10,10 +10,13 @@ import {HttpClientModule} from '@angular/common/http';
 import { CriminalComponent } from './criminal/criminal.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
 import { ViewCriminalComponent } from './view-criminal/view-criminal.component';
-
+import {MatButtonModule, MatSlideToggleModule} from '@angular/material';
+import { ViewAllFirsComponent } from './view-all-firs/view-all-firs.component';
+import { ViewAdminNCComponent } from './view-admin-nc/view-admin-nc.component';
+ 
 
 @NgModule({
-  declarations: [AdminDashboardComponent, AdminComponent, CarouselComponent, CriminalComponent, ViewCriminalComponent],
+  declarations: [AdminDashboardComponent, AdminComponent, CarouselComponent, CriminalComponent, ViewCriminalComponent, ViewAllFirsComponent, ViewAdminNCComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -21,6 +24,7 @@ import { ViewCriminalComponent } from './view-criminal/view-criminal.component';
     HttpClientModule,
     NgMultiSelectDropDownModule.forRoot(),
     AdminRoutingModule,
+    MatSlideToggleModule
   ],
   exports:[CarouselComponent]
 })

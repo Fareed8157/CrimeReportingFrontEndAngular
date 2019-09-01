@@ -11,6 +11,7 @@ import { SliderService } from '../services/slider.service';
 })
 export class AdminDashboardComponent implements OnInit {
 
+  myModel=true;
   sliderForm:FormGroup;
   public stringSlider:any;
   imgUrl:any;
@@ -96,6 +97,9 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
+  toggleButton(){
+    console.log(this.myModel);
+  }
   logValidationError(group: FormGroup=this.sliderForm): void {
     Object.keys(group.controls).forEach((key: string) => {
       const abstractControl = group.get(key);

@@ -1,0 +1,51 @@
+<div class="container">
+    
+    <div class="card" style="margin-top: 70px; margin-bottom:70px;">
+       <div class="card-header bg-success mb-3 border-success text-center">
+          <h5><b style="color: white;">NC DETAILS</b></h5>
+       </div>
+       <div class="card-header text-center">
+          <h1><b>Police Form 24-5(1)</b></h1>
+          <p>Non Cognizable offence reported under section 155 Cr.P.C </p>
+          <p><b>NC NO#</b> {{nc.id}} <b>   PS:</b> {{nc.policeStation.name}} <b>District:</b> Khairpur  <b>Date & Time</b> {{nc.ncSubmittedDate}}</p>
+          <br>
+       </div>
+       <div class="card-body center">
+          <table class="table table-bordered">
+             <tbody>
+                <tr>
+                    <th>Full Name</th>
+                    <td>{{nc.user.firstName}} {{nc.user.lastName}}</td>
+                </tr>
+                <tr>
+                    <th>Father Name</th>
+                    <td>{{nc.user.fatherName}}</td>
+                </tr>
+                <tr>
+                   <th>ADDRESS</th>
+                   <td>{{nc.user.address}}</td>
+                </tr>
+                <tr>
+                    <th>NIC of the complainant</th>
+                    <td>{{nc.user.nic}}</td>
+                </tr>
+                <tr>
+                    <th>NC Type</th>
+                    <td>{{nc.ncType.name}}</td>
+                </tr>
+                <tr>
+                    <th>Copy Of NC</th>
+                    <td>
+                        <button [disabled]="!nc.status" type="button" class="btn btn-light buttonDownload" (click)="downloadNCCopy(nc.id)">Download</button>
+                    </td>
+                </tr>
+             </tbody>
+          </table>
+       </div>
+       <div class="card-footer">
+          <div class="container" style="margin: 20px;padding: 30px">
+             {{nc.description}}
+          </div>
+       </div>
+    </div>
+ </div>

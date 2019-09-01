@@ -9,8 +9,13 @@ import { BodyContentComponent } from './body-content/body-content.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminModule } from './admin/admin.module';
 import { ClientModule } from './client/client.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { SignupComponent } from './signup/signup.component';
+import {ReactiveFormsModule} from  '@angular/forms';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     HeaderComponent,
     FooterComponent,
     BodyContentComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +32,15 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     AdminModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    BsDatepickerModule.forRoot()
+    ToastrModule.forRoot({
+      timeOut:2000,
+      positionClass:'toast-top-right',
+      preventDuplicates:false
+    }),
+    ReactiveFormsModule,
+    NgMultiSelectDropDownModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

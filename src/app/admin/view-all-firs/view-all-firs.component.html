@@ -1,0 +1,27 @@
+<table class="table table-bordered text-center" style="margin-top: 50px;margin-bottom: 50px">
+        <thead>
+          <tr>
+            <th scope="col">Fir No</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let fir of userFirs">
+            <td>{{fir.id}}</td>
+            <td>
+                <h5>
+                    <mat-slide-toggle (click)="toggleButton(fir.id)" [(ngModel)]="fir.status"></mat-slide-toggle> 
+                    <!-- <a [ngClass]="getColor(fir.status)">{{pendingOrSubmitted}}</a> -->
+                </h5> 
+            </td>
+            <td>
+              <a (click)="viewFir(fir.id)" class="view" title="view" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a>
+              <a class="edit" title="edit" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-pencil"></span></a>
+            </td>
+          </tr>
+          
+        </tbody>
+</table>
+
+      

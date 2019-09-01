@@ -1,0 +1,67 @@
+<div class="container">
+    
+        <div class="card" style="margin-top: 70px; margin-bottom:70px;">
+           <div class="card-header bg-success mb-3 border-success text-center">
+              <h5><b style="color: white;">FIR DETAILS</b></h5>
+           </div>
+           <!-- <div id="outer">
+                <div id="inner">
+                 <select value="1" class="form-control selectpicker" data-width="fit" (change)="getLanguage($event.target.value)">
+                    <option value="1" selected>
+                       English
+                    </option>
+                    <option value="2">
+                       Sindhi
+                    </option>
+                 </select>
+                </div>
+             </div> -->
+           <div class="card-header text-center">
+              <h1><b>Police Form 24-5(1)</b></h1>
+              <p>First Information Report in respect of cognizable offence reported under section 154 Cr.P.C </p>
+              <p>In the court of honorable Judicial magistrate <b>{{policeStation.name}}</b> PS <b>{{policeStation.name}}</b> </p>
+              <p><b>FIR NO#</b> {{fir.id}} <b>   PS:</b> {{policeStation.name}} <b>District:</b> Khairpur  <b>Date & Time</b> {{fir.firSubmittedDate}}</p>
+              <br>
+           </div>
+           <div class="card-body center">
+              <table class="table table-bordered">
+                 <tbody>
+                    <tr>
+                       <th>Date & time of Report</th>
+                       <td>{{fir.firSubmittedDate}}</td>
+                    </tr>
+                    
+                    <tr>
+                       <th>Name ,ADDRESS of the complaint</th>
+                       <td>{{user.firstName}} {{user.lastName}},{{fir.addressOfcomplainant}}</td>
+                    </tr>
+                    <tr>
+                       <th>Brief of the offerences along with sections</th>
+                       <td >
+                          <span *ngFor="let crime of crimeType">
+                          {{crime.name}},{{crime.section}}
+                          </span>
+                       </td>
+                    </tr>
+                    <tr>
+                       <th>Place of incident distance and the sides</th>
+                       <td>{{fir.placeOfIncident}}</td>
+                    </tr>
+                    <tr>
+                     <th>Proofs</th>
+                     
+                     <td>
+                        <button type="button" class="btn btn-light buttonDownload" (click)="downloadProofs(firOriginal.modifiedFileName)">Download</button>
+                        <button type="button" class="btn btn-light buttonDownload" (click)="downloadFirCopy(fir.id)">Download Fir Copy</button>
+                     </td>
+                  </tr>
+                 </tbody>
+              </table>
+           </div>
+           <div class="card-footer">
+              <div class="container" style="margin: 20px;padding: 30px">
+                 {{fir.description}}
+              </div>
+           </div>
+        </div>
+     </div>

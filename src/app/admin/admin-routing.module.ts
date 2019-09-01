@@ -4,11 +4,14 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AdminComponent } from './admin/admin.component';
 import { CriminalComponent } from './criminal/criminal.component';
 import { ViewCriminalComponent } from './view-criminal/view-criminal.component';
+import { AuthGuard } from '../auth.guard';
+import { ViewAllFirsComponent } from './view-all-firs/view-all-firs.component';
+import { ViewAdminNCComponent } from './view-admin-nc/view-admin-nc.component';
 
 const routes: Routes = [
   {
     path: 'admin',
-    component: AdminComponent,
+    component: AdminComponent,canActivate:[AuthGuard],data:{role:['ADMIN']},
     children: [
       {
       path: '',
@@ -22,6 +25,12 @@ const routes: Routes = [
             {path:'viewCriminal',component:ViewCriminalComponent},
             {path:'edit/:id',component:CriminalComponent}
           ]
+        },
+        {
+          path:'viewFirs',component:ViewAllFirsComponent
+        },
+        {
+          path:'viewNCs',component:ViewAdminNCComponent
         },
         { path: '', component: AdminDashboardComponent }
       ],
